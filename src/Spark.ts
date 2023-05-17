@@ -20,7 +20,7 @@ class Spark extends Arc {
     super(options);
     this.tailPointsCount = 10; // 拖尾点数
     // 飞线速度
-    this.factor = 2 / this.radius;
+    this.factor = 0.4 / this.radius;
     this.deltaAngle = 80 / Math.min(this.radius, 400) / this.tailPointsCount;
     this.trailAngle = this.startAngle;
     // this.arcAngle = this.startAngle;
@@ -80,7 +80,7 @@ class Spark extends Arc {
 
   // 检查飞线是否抵达终点
   get isEnd(): boolean {
-    return ((this.endAngle - this.trailAngle) * 180) / Math.PI < 0.5;
+    return ((this.endAngle - this.trailAngle) * 180) / Math.PI < 0.001;
   }
 
   // 重新发射射线
